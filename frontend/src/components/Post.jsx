@@ -14,7 +14,6 @@ function Post({
           <h4 className="card-title">{titulo}</h4>
           <p className="card-text">{descripcion}</p>
           <div className="d-flex justify-content-between align-items-center">
-            {/* sin uso actualmente, se utilizara en el siguiente desafio
             <div>
               <i
                 onClick={() => like(id)}
@@ -25,10 +24,9 @@ function Post({
               <span className="ms-1">{likes}</span>
             </div>
             <i
-              onClick={() => eliminarPost(id)}
+              onClick={() => eliminarPost(id, titulo)}
               className="fa-solid fa-x"
             ></i>
-            */}
           </div>
         </div>
       </div>

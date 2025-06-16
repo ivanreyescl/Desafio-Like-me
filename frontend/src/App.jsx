@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Form from "./components/Form";
 import Post from "./components/Post";
+import Swal from "sweetalert2";
 
 const urlBaseServer = "http://localhost:5000";
 
@@ -22,14 +23,21 @@ function App() {
     getPosts();
   };
 
-  // este método se utilizará en el siguiente desafío
   const like = async (id) => {
     await axios.put(urlBaseServer + `/posts/like/${id}`);
     getPosts();
   };
 
-  // este método se utilizará en el siguiente desafío
-  const eliminarPost = async (id) => {
+  const eliminarPost = async (id, titulo) => {
+    const result = await Swal.fire({
+      title: `Estás seguro que quieres eliminar el post ${titulo}?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    });
+
+    if (!result.isConfirmed) return;
     await axios.delete(urlBaseServer + `/posts/${id}`);
     getPosts();
   };
